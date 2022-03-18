@@ -1,0 +1,57 @@
+Mar-17 18:39:02.468 [main] DEBUG nextflow.cli.Launcher - $> nextflow run annotation.nf
+Mar-17 18:39:03.214 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.1
+Mar-17 18:39:03.354 [main] INFO  nextflow.cli.CmdRun - Launching `annotation.nf` [infallible_dijkstra] - revision: 24027244a8
+Mar-17 18:39:03.667 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/home/giabaohan/.nextflow/plugins
+Mar-17 18:39:03.727 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Mar-17 18:39:03.729 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+Mar-17 18:39:03.762 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Mar-17 18:39:03.763 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Mar-17 18:39:03.766 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Mar-17 18:39:03.932 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Mar-17 18:39:04.231 [main] DEBUG nextflow.Session - Session uuid: 9fc8ea97-b0e9-49df-98fc-bcce30889bc6
+Mar-17 18:39:04.231 [main] DEBUG nextflow.Session - Run name: infallible_dijkstra
+Mar-17 18:39:04.283 [main] DEBUG nextflow.Session - Executor pool size: 68
+Mar-17 18:39:04.395 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.1 build 5556
+  Created: 14-05-2021 15:20 UTC (11:20 EDT)
+  System: Linux 3.10.0-1160.36.2.el7.x86_64
+  Runtime: Groovy 3.0.7 on Java HotSpot(TM) 64-Bit Server VM 1.8.0_91-b14
+  Encoding: UTF-8 (UTF-8)
+  Process: 53005@qlogin11.ccm.sickkids.ca [172.20.12.101]
+  CPUs: 68 - Mem: 168.1 GB (54.4 GB) - Swap: 0 (0)
+Mar-17 18:39:04.627 [main] DEBUG nextflow.Session - Work-dir: /home/giabaohan/jobs/work [nfs]
+Mar-17 18:39:04.628 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/giabaohan/jobs/bin
+Mar-17 18:39:04.640 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Mar-17 18:39:04.706 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Mar-17 18:39:07.226 [main] DEBUG nextflow.Session - Session start invoked
+Mar-17 18:39:09.801 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Mar-17 18:39:09.863 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: queryCADD, getUniqueVariants, queryGnomAD, convertVariantsToCSV
+Mar-17 18:39:10.778 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-17 18:39:10.779 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-17 18:39:10.870 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Mar-17 18:39:10.875 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=68; memory=168.1 GB; capacity=68; pollInterval=100ms; dumpInterval=5m
+Mar-17 18:39:11.774 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-17 18:39:11.774 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-17 18:39:11.814 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-17 18:39:11.814 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-17 18:39:11.881 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Mar-17 18:39:11.882 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Mar-17 18:39:11.945 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Mar-17 18:39:11.945 [main] DEBUG nextflow.Session - Session await
+Mar-17 18:39:13.453 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-17 18:39:13.519 [Task submitter] INFO  nextflow.Session - [f8/5acfb8] Submitted process > convertVariantsToCSV (1)
+Mar-17 18:39:14.743 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: convertVariantsToCSV (1); status: COMPLETED; exit: 0; error: -; workDir: /home/giabaohan/jobs/work/f8/5acfb8b0f21bbe217b88f1079fcd2b]
+Mar-17 18:39:15.006 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-17 18:39:15.036 [Task submitter] INFO  nextflow.Session - [b6/438299] Submitted process > getUniqueVariants (1)
+Mar-17 18:39:16.585 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: getUniqueVariants (1); status: COMPLETED; exit: 0; error: -; workDir: /home/giabaohan/jobs/work/b6/4382995389589ccc3b683997e83478]
+Mar-17 18:39:16.645 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-17 18:39:16.645 [Task submitter] INFO  nextflow.Session - [94/0c4c96] Submitted process > queryCADD (1)
+Mar-17 18:39:16.680 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Mar-17 18:39:16.681 [Task submitter] INFO  nextflow.Session - [52/fa44a9] Submitted process > queryGnomAD (1)
+Mar-17 18:39:16.759 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: queryGnomAD (1); status: COMPLETED; exit: 0; error: -; workDir: /home/giabaohan/jobs/work/52/fa44a9dd4410225cfda56a68fdd704]
+Mar-17 18:39:33.131 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: queryCADD (1); status: COMPLETED; exit: 0; error: -; workDir: /home/giabaohan/jobs/work/94/0c4c96888ced23ff5456148bb83055]
+Mar-17 18:39:33.139 [main] DEBUG nextflow.Session - Session await > all process finished
+Mar-17 18:39:33.147 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Mar-17 18:39:33.169 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=4; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=18.8s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=2; peakMemory=0; ]
+Mar-17 18:39:33.341 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Mar-17 18:39:33.486 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
