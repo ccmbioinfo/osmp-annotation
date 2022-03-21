@@ -3,13 +3,13 @@ name: "Build and push workflow image"
 on:
   push:
     branches:
-      - develop
+      - main
     paths:
       - .github/workflows/publish.yml
       - /**/**
   pull_request:
     branches:
-      - develop
+      - main
     paths:
       - .github/workflows/publish.yml
       - /**/**
