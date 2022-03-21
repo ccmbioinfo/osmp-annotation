@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.vendor Centre for Computational Medicine
 WORKDIR /usr/app
 
 # Install Python requirements
-COPY requirements.txt
+COPY requirements.txt .
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Install tabix
