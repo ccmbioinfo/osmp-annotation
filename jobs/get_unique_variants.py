@@ -6,7 +6,7 @@ def get_parser():
         '''
         Takes variant report and return a string of unique coordinates
         '''
-    )
+)
     parser.add_argument(
         "--variants",
         type=str,
