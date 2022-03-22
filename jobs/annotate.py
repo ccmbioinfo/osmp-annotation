@@ -33,6 +33,9 @@ def get_parser():
 
 # Schema for variants:referenceName, start, end, ref, alt df.rename(columns={"A": "a", "B": "c"})
 
+#Todo: Add error checking
+#Todo: write unit tests
+
 def annotate_and_merge(variants_csv, cadd_csv, gnomad_csv):
     variants = pd.read_csv(variants_csv, sep=',')
     cadd = pd.read_csv(cadd_csv, sep='\s+')

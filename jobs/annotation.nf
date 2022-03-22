@@ -10,7 +10,7 @@ json_ch = Channel.from(params.json)
 */
 
 // Index file for Tabix
-baseDir = '/hpf/largeprojects/ccmbio/osmp'
+baseDir = '/tmp/hpf/largeprojects/ccmbio/osmp'
 caddIndex = "${baseDir}/whole_genome_SNVs_inclAnno_GRCh37.tsv.gz.csi"
 caddAnnotationUrl = 'https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh37/whole_genome_SNVs_inclAnno.tsv.gz'
 gnomadIndex = "${baseDir}/gnomAD_GRCh37.tsv.gz.csi"
@@ -106,19 +106,20 @@ process queryGnomAD {
     """
 }
 
-process mergeAnnotations {
-    input: 
-    val v from variants_ch_2
-    val g from gnomad_annotation
-    val c from cadd_annotation
+// process mergeAnnotations {
+//     input: 
+//     val v from variants_ch_2
+//     val g from gnomad_annotation
+//     val c from cadd_annotation
 
-    output:
-    stdout into annotated_variants
+//     output:
+//     stdout into annotated_variants
     
-    script:
-    """
-    python $workflow.projectDir/annotate.py --variants '$v' --cadd '$c' --gnomad '$g' 
-    """
-}
+//     script:
+//     """
+//     python $workflow.projectDir/annotate.py --variants '$v' --cadd '$c' --gnomad '$g' 
+//     """
+// }
 
-annotated_variants.view()
+cadd_annotation.view()
+gnomad_annotation.view()

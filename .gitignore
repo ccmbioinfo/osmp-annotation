@@ -1,3 +1,5 @@
 jobs/work/*
 jobs/.nextflow/*
 jobs/.nextflow.*
+.nextflow.log
+jobs/ghcr.io-ccmbioinfo-osmp-annotation-dev.img
