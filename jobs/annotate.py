@@ -1,3 +1,4 @@
+import os
 import pandas as pd 
 from functools import reduce
 import argparse
@@ -30,6 +31,18 @@ def get_parser():
     )
     return parser
 
+def format_df(filepath, columns={}):
+    if os.stat(filepath).st_size == 0:
+        return pd.DataFrame(columns=["referenceName", "ref", "alt", "start"])
+    else:
+        if filepath.endswith("csv"):
+            df = pd.read_csv(filepath, sep=',')
+        elif filepath.endswith("tsv"):
+            df = pd.read_csv(filepath, sep='\s+')
+        else:
+            raise Exception("Invalid file format. Please make sure the input files are TSV or CSV.")
+    
+        return df.rename(columns=columns)
 
 # Schema for variants:referenceName, start, end, ref, alt df.rename(columns={"A": "a", "B": "c"})
 
@@ -37,26 +50,19 @@ def get_parser():
 #Todo: write unit tests
 
 def annotate_and_merge(variants_csv, cadd_csv, gnomad_csv):
-    variants = pd.read_csv(variants_csv, sep=',')
-    cadd = pd.read_csv(cadd_csv, sep='\s+')
-    cadd = cadd.rename(columns={
+    variants = format_df(variants_csv)
+    cadd = format_df(cadd_csv, {
         "#Chrom": "referenceName",
         "Ref": "ref",
         "Alt": "alt",
         "Pos": "start"
     })
-    gnomad = pd.read_csv(gnomad_csv, sep='\s+')
-    gnomad = gnomad.rename(columns={
+    gnomad = format_df(gnomad_csv, {
         "#chrom": "referenceName",
         "pos": "start"
     })
 
-    # join
-    # certain values from one file replaces values in other
-
     data_frames = [variants, cadd, gnomad]
-
-    print(cadd, gnomad)
 
     df_merged = reduce(lambda  left,right: pd.merge(left,right,on=["referenceName", "ref", "alt", "start"], # Only start because of SNVs
                                             how='outer'), data_frames).fillna('')
