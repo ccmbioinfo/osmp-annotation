@@ -6,7 +6,7 @@ json_ch = Channel.from(params.json)
 // Index file for Tabix
 baseDir = '/hpf/largeprojects/ccmbio/osmp'
 caddIndex = "${baseDir}/whole_genome_SNVs_inclAnno_GRCh37.tsv.gz.csi"
-caddAnnotationUrl = 'https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh37/whole_genome_SNVs_inclAnno.tsv.gz'
+caddAnnotationUrl = "${baseDir}/whole_genome_SNVs_inclAnno_GRCh37.tsv.gz"
 gnomadIndex = "${baseDir}/gnomAD_GRCh37.tsv.gz.csi"
 gnomadAnnotationFile = "${baseDir}/gnomAD_GRCh37.tsv.gz"
 
@@ -64,7 +64,7 @@ process queryCADD {
     
     script:
     """
-    tabix -h $caddAnnotationUrl $caddIndex $u | awk 'NR!=1{print \$1,\$2,\$3,\$4,\$8,\$17,\$18,\$20,\$25,\$29}' >  cadd.tsv
+    tabix -D -h $caddAnnotationUrl $caddIndex $u | awk 'NR!=1{print \$1,\$2,\$3,\$4,\$8,\$17,\$18,\$20,\$25,\$29}' >  cadd.tsv
     """
 }
 
@@ -96,7 +96,7 @@ process queryGnomAD {
 
     script:
     """
-    tabix -h $gnomadAnnotationFile $gnomadIndex $u | awk -F '\t' '{print \$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$10, \$11, \$12}' >  gnomad.tsv 
+    tabix -D -h $gnomadAnnotationFile $gnomadIndex $u | awk -F '\t' '{print \$1, \$2, \$3, \$4, \$5, \$6, \$7, \$8, \$10, \$11, \$12}' >  gnomad.tsv 
     """
 }
 
