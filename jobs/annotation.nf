@@ -21,7 +21,7 @@ process convertVariantsToCSV {
 
     script:
     """
-    python $workflow.projectDir/json2csv.py --json '$v' > variants.csv
+    python $workflow.projectDir/scripts/json2csv.py --json '$v' > variants.csv
     """
 }
 
@@ -36,7 +36,7 @@ process getUniqueVariants {
 
     script: 
     """
-    python $workflow.projectDir/get_unique_variants.py --variants $v
+    python $workflow.projectDir/scripts/get_unique_variants.py --variants $v
     """
 }
 
@@ -111,7 +111,7 @@ process mergeAnnotations {
     
     script:
     """
-    python $workflow.projectDir/annotate.py --variants '$v' --cadd '$c' --gnomad '$g' 
+    python $workflow.projectDir/scripts/annotate.py --variants '$v' --cadd '$c' --gnomad '$g' 
     """
 }
 
