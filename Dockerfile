@@ -14,7 +14,7 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 RUN apt-get update && apt-get install -y tabix
 
 #install node.js
-RUN apt-get update && apt-get install -y nodejs wget 
+RUN apt-get update && apt-get install -y nodejs npm wget && npm i -D @types/node
 
 #install liftover
 RUN wget -O /usr/local/bin/liftOver https://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/liftOver  \
