@@ -29,7 +29,7 @@ for row in $(echo $1 | jq -c '.[]'); do
     u=$(expr $u + 2)
   else
     echo $row | jq --arg assembly $2 '.currentCoordinate=$assembly' | jq --arg start $(echo "$lifted" | awk '{print $2}') '.start=$start' | jq --arg endPosition $(echo "$lifted" | awk '{print $3}') '.end=$endPosition' >>"$RESULT"
-    u=$(expr $i + 2)
+    i=$(expr $i + 1)
   fi
 done
 cat $RESULT
