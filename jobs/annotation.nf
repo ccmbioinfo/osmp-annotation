@@ -2,7 +2,7 @@
 
 // params.json = '[{"start":53715075,"end":53715075,"referenceName":1,"ref":"A","alt":"C","originalCoordinate":"GRCh37"},{"start":31656524,"end":31656524,"referenceName":6,"ref":"A","alt":"C","originalCoordinate":"GRCh37"},{"start":31656524,"end":31656524,"referenceName":6,"ref":"A","alt":"C", "originalCoordinate":"GRCh38"}]'
 
-params.json = '[{"start":53715075,"end":53715075,"referenceName":1,"ref":"A","alt":"C","originalCoordinate":"GRCh37"},{"start":53715075,"end":53715075,"referenceName":1,"ref":"A","alt":"C","originalCoordinate":"GRCh37"}]'
+params.json = '[{"start":5,"end":5,"referenceName":1,"ref":"A","alt":"C","originalCoordinate":"GRCh37"},{"start":53715075,"end":53715075,"referenceName":1,"ref":"A","alt":"C","originalCoordinate":"GRCh38"}]'
 
 
 json_ch = Channel.from(params.json)
