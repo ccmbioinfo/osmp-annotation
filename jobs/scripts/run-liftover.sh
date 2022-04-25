@@ -18,7 +18,7 @@ i=1
 u=2
 
 RESULT=$(mktemp /tmp/result.XXXX)
-
+echo "[" > $RESULT
 for row in $(echo $1 | jq -c '.[]'); do
   unlifted=$(sed -n ${u}p $OUTPUT_UNLIFTED)
   lifted=$(sed -n ${i}p $OUTPUT_LIFTED)
@@ -31,7 +31,12 @@ for row in $(echo $1 | jq -c '.[]'); do
     echo $row | jq --arg assembly $2 '.currentCoordinate=$assembly' | jq --arg start $(echo "$lifted" | awk '{print $2}') '.start=$start' | jq --arg endPosition $(echo "$lifted" | awk '{print $3}') '.end=$endPosition' >>"$RESULT"
     i=$(expr $i + 1)
   fi
+  echo "," >> $RESULT
 done
+echo "]" >> $RESULT
+
+sed -i 'N;$!P;D' $RESULT # remove the comma on second to last line
+
 cat $RESULT
 
 rm ${INPUT} ${OUTPUT_LIFTED} ${OUTPUT_UNLIFTED} ${RESULT}
