@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+#####Need to handle conversion between position format and BED format!
+
 bedstring=$(echo $1 | jq -r --arg assembly $2 '.[] | select( .originalCoordinate != $assembly) | "chr\(.referenceName)\t\(.start)\t\(.end)"')
 
 INPUT=$(mktemp /tmp/input.XXXX)

@@ -32,25 +32,28 @@ hg19ValidationUnlifted="${baseDir}/liftover/validation/hg19_unlifted_validation.
 
 
 // Process input sample files in JSON format with correct field names. The output is in JSON format
-process sampleFiles{
+// process sampleFiles{
 
-    script:
-    """
-    bash $workflow.projectDir/scripts/convert-samples-json.sh $hg19SampleInput $hg19SampleInputProcessed
-    """
-}
+//     script:
+//     """
+//     bash $workflow.projectDir/scripts/convert-samples.sh $hg19SampleInput $hg19SampleInputProcessed
+//     """
+// }
 
-//Run Liftover command line tool. $hg19SampleOutputLifted' '$hg19SampleOutputUnlifted' are populated with the results. 
-process liftover{
+//Run Liftover command line tool. $hg19SampleOutputLifted' '$hg19SampleOutputUnlifted' are populated with the results. The input has a "," before the closing bracket. Need to delete this ","
+// process liftover{
 
-    input:
-    val assembly from assemblyNumber
+//     input:
+//     val assembly from assemblyNumber
 
-    script: 
-    """
-    bash $workflow.projectDir/scripts/run-liftover-test.sh '$hg19SampleInputProcessed' '$assembly' '$hg19ToHg38' '$hg38ToHg19' '$hg19SampleOutputLifted' '$hg19SampleOutputUnlifted' 
-    """
-}
+//     script: 
+//     """
+//     bash $workflow.projectDir/scripts/run-liftover-test.sh '$hg19SampleInputProcessed' '$assembly' '$hg19ToHg38' '$hg38ToHg19' '$hg19SampleOutputLifted' '$hg19SampleOutputUnlifted' 
+//     """
+// }
+
+// convert BED format to position format: start + 1
+
 
 // The content of $hg19SampleOutputLifted should match the content of $hg19ValidationLifted
 // The content of $hg19SampleOutputUnlifted should match the content of $hg19ValidationUnlifted
